@@ -83,19 +83,20 @@ return {
     end,
   },
 {
+  'kaarmu/typst.vim',
+  ft = 'typst',
+  lazy=false,
+},
+{
+  'chomosuke/typst-preview.nvim',
+  lazy = false, -- or ft = 'typst'
+  version = '0.3.*',
+  build = function() require 'typst-preview'.update() end,
+},
+{
   "neovim/nvim-lspconfig",
   dependencies = {
     { "AstroNvim/astrolsp", opts = { features = { inlay_hints = true,},},},
-   -- {
-   --   "williamboman/mason-lspconfig.nvim", -- MUST be set up before `nvim-lspconfig`
-   --   dependencies = { "williamboman/mason.nvim" },
-   --   opts = function()
-   --     return {
-          -- use AstroLSP setup for mason-lspconfig
-   --       handlers = { function(server) require("astrolsp").lsp_setup(server) end },
-   --     }
-   --    end,
-   -- },
   },
   config = function()
     -- set up servers configured with AstroLSP
